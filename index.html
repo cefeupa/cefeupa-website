@@ -278,7 +278,7 @@
 
     @keyframes ticker-anim {
       0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      100% { transform: translateX(-25%); }
     }
 
     /* ===== SERVICES SECTION ===== */
@@ -667,35 +667,34 @@
     .newsletter-form {
       display: flex;
       align-self: center;
+      gap: 14px;
     }
-
-    .newsletter-input {
-      border: 1.5px solid #c8c2b0;
-      border-right: none;
-      padding: 14px 18px;
-      font-size: 14px;
-      font-family: 'Inter', sans-serif;
-      background: #fff;
-      width: 260px;
-      border-radius: 4px 0 0 4px;
-      outline: none;
-      color: #aaa;
-    }
-
-    .newsletter-input::placeholder { color: #aaa; }
 
     .newsletter-btn {
-      background: #1a1a1a;
-      color: #fff;
       padding: 14px 20px;
       font-size: 13px;
       font-weight: 700;
       border: none;
       cursor: pointer;
-      border-radius: 0 4px 4px 0;
+      border-radius: 4px;
       font-family: 'Inter', sans-serif;
       white-space: nowrap;
       letter-spacing: 0.02em;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .newsletter-btn-primary {
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    .newsletter-btn-secondary {
+      background: transparent;
+      color: #1a1a1a;
+      border: 1.5px solid #1a1a1a;
     }
 
     /* ===== FOOTER ===== */
@@ -869,7 +868,6 @@
 
       .newsletter-heading { font-size: 34px; }
       .newsletter-form { align-self: stretch; }
-      .newsletter-input { width: 0; flex: 1; }
 
       footer { padding: 32px 24px 24px; }
       .footer-top { flex-direction: column; gap: 18px; align-items: flex-start; }
@@ -888,8 +886,7 @@
       .calendar-wrap iframe { height: 480px; min-height: 480px; }
 
       .newsletter-form { flex-direction: column; }
-      .newsletter-input { width: 100%; border-right: 1.5px solid #c8c2b0; border-bottom: none; border-radius: 4px 4px 0 0; }
-      .newsletter-btn { border-radius: 0 0 4px 4px; width: 100%; }
+      .newsletter-btn { width: 100%; justify-content: center; }
 
       .footer-socials { align-self: flex-start; }
     }
@@ -978,6 +975,28 @@
       <span class="ticker-item">·</span>
       <span class="ticker-item">Comunidad</span>
       <span class="ticker-item">·</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item">Charlas</span>
+      <span class="ticker-item">·</span>
+      <span class="ticker-item">Eventos</span>
+      <span class="ticker-item">·</span>
+      <span class="ticker-item">Acción Social</span>
+      <span class="ticker-item">·</span>
+      <span class="ticker-item">Oportunidades</span>
+      <span class="ticker-item">·</span>
+      <span class="ticker-item">Comunidad</span>
+      <span class="ticker-item">·</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item">Charlas</span>
+      <span class="ticker-item">·</span>
+      <span class="ticker-item">Eventos</span>
+      <span class="ticker-item">·</span>
+      <span class="ticker-item">Acción Social</span>
+      <span class="ticker-item">·</span>
+      <span class="ticker-item">Oportunidades</span>
+      <span class="ticker-item">·</span>
+      <span class="ticker-item">Comunidad</span>
+      <span class="ticker-item">·</span>
     </div>
   </div>
 
@@ -1044,12 +1063,12 @@
     <div class="newsletter-content">
       <p class="newsletter-label">No te pierdas nada</p>
       <h2 class="newsletter-heading">Enterate primero.</h2>
-      <p class="newsletter-desc">Recibí eventos, oportunidades y novedades directamente en tu correo.</p>
+      <p class="newsletter-desc">Recibí eventos, oportunidades y novedades. Suscribite al calendario o seguinos en Instagram.</p>
     </div>
 
     <div class="newsletter-form">
-      <input class="newsletter-input" type="email" placeholder="tu.nombre@upa.edu.py">
-      <button class="newsletter-btn">Quiero sumarme →</button>
+      <a class="newsletter-btn newsletter-btn-primary" href="https://calendar.google.com/calendar/render?cid=c_cf79b4933169c51315828613ebaa6a68d1af295df08a06e6f4fca94690d0e5d1%40group.calendar.google.com" target="_blank" rel="noopener">Suscribirme al calendario →</a>
+      <a class="newsletter-btn newsletter-btn-secondary" href="https://www.instagram.com/cefeupa_" target="_blank" rel="noopener">Seguir en Instagram →</a>
     </div>
   </div>
 
@@ -1062,11 +1081,6 @@
       </div>
 
       <p class="footer-tagline">Hecho por estudiantes, para estudiantes.</p>
-
-      <div class="footer-socials">
-        <a href="conectate.html" class="social-btn">ig</a>
-        <a href="conectate.html" class="social-btn at-icon">@</a>
-      </div>
     </div>
 
     <p class="footer-copy">© 2026 CEFEUPA &nbsp;·&nbsp; Universidad Paraguayo Alemana</p>
