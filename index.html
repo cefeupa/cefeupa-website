@@ -398,6 +398,35 @@
 
     .card-featured .card-arrow { color: rgba(255,255,255,0.6); }
 
+    /* ===== CALENDAR SECTION ===== */
+    .calendar-section {
+      background: #ede8d5;
+      padding: 0 80px 96px;
+    }
+
+    .calendar-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+      align-items: end;
+    }
+
+    .calendar-wrap {
+      background: #f4f0e3;
+      border-radius: 12px;
+      padding: 14px;
+      overflow: hidden;
+    }
+
+    .calendar-wrap iframe {
+      width: 100%;
+      height: 600px;
+      border: 0;
+      border-radius: 8px;
+      display: block;
+    }
+
     /* ===== IDEAS SECTION ===== */
     .ideas {
       background: #8aaa2e;
@@ -732,13 +761,134 @@
       font-size: 12px;
       color: rgba(255,255,255,0.4);
     }
+
+    /* ===== RESPONSIVE NAV ===== */
+    .nav-toggle { display: none; }
+
+    .nav-toggle-label {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      cursor: pointer;
+      z-index: 101;
+    }
+
+    .nav-toggle-label span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #1a1a1a;
+      border-radius: 2px;
+    }
+
+    .nav-cta-mobile { display: none; }
+
+    /* ===== MEDIA QUERIES ===== */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; position: relative; }
+      .nav-toggle-label { display: flex; }
+      .nav-cta-desktop { display: none; }
+
+      .nav-links {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        right: 0;
+        background: #f2ede0;
+        flex-direction: column;
+        gap: 0;
+        display: none;
+        padding: 6px 24px 20px;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+      }
+
+      .nav-links li {
+        width: 100%;
+        border-top: 1px solid rgba(0,0,0,0.06);
+      }
+
+      .nav-links li a { display: block; padding: 16px 0; }
+
+      .nav-cta-mobile { display: block; margin-top: 10px; }
+      .nav-cta-mobile a.nav-cta { display: flex; width: 100%; justify-content: center; padding: 14px 20px; }
+
+      .nav-toggle:checked ~ .nav-links { display: flex; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 48px 24px 56px;
+        min-height: unset;
+      }
+
+      .hero-heading { font-size: 44px; }
+      .hero-desc { max-width: 100%; }
+      .hero-right { order: -1; height: 340px; margin-bottom: 12px; }
+      .hero-logo-wrap { width: 200px; height: 200px; }
+
+      .badge { font-size: 10px; padding: 7px 12px; }
+      .badge-ideas { top: 10px; right: 10px; }
+      .badge-comunidad { left: 4px; }
+      .badge-accion { bottom: 78px; right: 6px; }
+      .hero-stat { padding: 10px 16px; bottom: 20px; left: 4px; }
+      .hero-stat-number { font-size: 24px; }
+
+      .services, .calendar-section, .ideas, .news { padding: 64px 24px; }
+      .calendar-section { padding: 0 24px 64px; }
+
+      .services-header, .calendar-header, .ideas-inner { grid-template-columns: 1fr; gap: 20px; }
+      .services-desc { align-self: start; }
+
+      .section-heading { font-size: 38px; }
+
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .card.span-2, .card.span-3 { grid-column: span 2; }
+
+      .ideas-heading { font-size: 42px; }
+
+      .news-cards { grid-template-columns: 1fr; }
+
+      .newsletter {
+        grid-template-columns: 1fr;
+        padding: 48px 24px 56px;
+        gap: 32px;
+        text-align: left;
+      }
+
+      .newsletter-heading { font-size: 34px; }
+      .newsletter-form { align-self: stretch; }
+      .newsletter-input { width: 0; flex: 1; }
+
+      footer { padding: 32px 24px 24px; }
+      .footer-top { flex-direction: column; gap: 18px; align-items: flex-start; }
+    }
+
+    @media (max-width: 560px) {
+      .hero-heading { font-size: 36px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+      .cards-grid { grid-template-columns: 1fr; }
+      .card.span-2, .card.span-3 { grid-column: span 1; }
+
+      .section-heading { font-size: 30px; }
+      .ideas-heading { font-size: 32px; }
+
+      .calendar-wrap iframe { height: 480px; min-height: 480px; }
+
+      .newsletter-form { flex-direction: column; }
+      .newsletter-input { width: 100%; border-right: 1.5px solid #c8c2b0; border-bottom: none; border-radius: 4px 4px 0 0; }
+      .newsletter-btn { border-radius: 0 0 4px 4px; width: 100%; }
+
+      .footer-socials { align-self: flex-start; }
+    }
   </style>
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav>
-    <a href="#" class="nav-brand">
+    <a href="index.html" class="nav-brand">
       <img src="cefeupa-logo.jpeg" alt="CEFEUPA Logo">
       <div class="nav-brand-text">
         <span class="nav-brand-name">CEFEUPA</span>
@@ -746,13 +896,19 @@
       </div>
     </a>
 
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </label>
+
     <ul class="nav-links">
-      <li><a href="#">Propuestas</a></li>
-      <li><a href="#">Agenda</a></li>
-      <li><a href="#">Equipo</a></li>
+      <li><a href="propuestas.html">Propuestas</a></li>
+      <li><a href="agenda.html">Agenda</a></li>
+      <li><a href="equipo.html">Equipo</a></li>
+      <li class="nav-cta-mobile"><a href="conectate.html" class="nav-cta">Conéctate &nbsp;↗</a></li>
     </ul>
 
-    <a href="#" class="nav-cta">Conéctate &nbsp;↗</a>
+    <a href="conectate.html" class="nav-cta nav-cta-desktop">Conéctate &nbsp;↗</a>
   </nav>
 
   <!-- HERO -->
@@ -766,8 +922,8 @@
       </h1>
       <p class="hero-desc">Impulsamos ideas, experiencias y oportunidades que hacen mejor tu vida universitaria.</p>
       <div class="hero-actions">
-        <a href="#" class="btn-olive">Ver próximas actividades &nbsp;↗</a>
-        <a href="#" class="btn-text-white">Conocé al equipo →</a>
+        <a href="agenda.html" class="btn-olive">Ver próximas actividades &nbsp;↗</a>
+        <a href="equipo.html" class="btn-text-white">Conocé al equipo →</a>
       </div>
     </div>
 
@@ -894,6 +1050,23 @@
     </div>
   </section>
 
+  <!-- CALENDAR -->
+  <section class="calendar-section">
+    <div class="calendar-header">
+      <div>
+        <p class="section-label">Agenda estudiantil</p>
+        <h2 class="section-heading">Próximas actividades</h2>
+      </div>
+      <p class="services-desc">Enterate de charlas, eventos y reuniones. Agendá las que te interesan y no te pierdas ninguna.</p>
+    </div>
+    <div class="calendar-wrap">
+      <iframe
+        src="https://calendar.google.com/calendar/embed?src=c_cf79b4933169c51315828613ebaa6a68d1af295df08a06e6f4fca94690d0e5d1%40group.calendar.google.com&ctz=America%2FAsuncion"
+        title="Calendario CEFEUPA"
+        loading="lazy"></iframe>
+    </div>
+  </section>
+
   <!-- IDEAS -->
   <section class="ideas">
     <div class="ideas-inner">
@@ -907,7 +1080,7 @@
       </div>
       <div>
         <p class="ideas-desc">Trabajamos para representar tus intereses, crear oportunidades y construir una comunidad universitaria más activa, conectada y participativa.</p>
-        <a href="#" class="btn-cream">Conocé al equipo &nbsp;↗</a>
+        <a href="equipo.html" class="btn-cream">Conocé al equipo &nbsp;↗</a>
       </div>
     </div>
   </section>
@@ -926,7 +1099,7 @@
           <p class="news-label label-green">Tips</p>
           <h3 class="news-title">5 herramientas de IA que todo estudiante debería conocer</h3>
           <p class="news-desc">Recursos simples para organizarte, investigar y presentar mejor tus trabajos.</p>
-          <a href="#" class="news-link">Conocer más ↗</a>
+          <a href="tips-ia.html" class="news-link">Conocer más ↗</a>
         </div>
       </div>
 
@@ -936,7 +1109,7 @@
           <p class="news-label label-red">Acción Social</p>
           <h3 class="news-title">Sumate a nuestra próxima colecta solidaria</h3>
           <p class="news-desc">Recibimos alimentos no perecederos y útiles escolares hasta el 20 de agosto.</p>
-          <a href="#" class="news-link">Conocer más ↗</a>
+          <a href="colecta.html" class="news-link">Conocer más ↗</a>
         </div>
       </div>
 
@@ -946,7 +1119,7 @@
           <p class="news-label label-blue">Encuesta Abierta</p>
           <h3 class="news-title">Queremos conocer tu experiencia en la UPA</h3>
           <p class="news-desc">Tu opinión nos ayuda a impulsar propuestas que realmente te representen.</p>
-          <a href="#" class="news-link">Conocer más ↗</a>
+          <a href="encuesta.html" class="news-link">Conocer más ↗</a>
         </div>
       </div>
     </div>
@@ -994,8 +1167,8 @@
       <p class="footer-tagline">Hecho por estudiantes, para estudiantes.</p>
 
       <div class="footer-socials">
-        <a href="#" class="social-btn">ig</a>
-        <a href="#" class="social-btn at-icon">@</a>
+        <a href="conectate.html" class="social-btn">ig</a>
+        <a href="conectate.html" class="social-btn at-icon">@</a>
       </div>
     </div>
 
